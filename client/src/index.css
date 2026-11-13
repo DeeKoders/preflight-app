@@ -1,0 +1,305 @@
+@import 'tailwindcss';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource-variable/source-serif-4';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Design tokens ------------------------------------------------------ */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --ink: #171a1f;
+  --ink-2: #3b414b;
+  --muted: #646c79;
+  --line: #e2e5ea;
+  --line-strong: #cdd2da;
+  --accent: #0e6b73;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3f1f2;
+  --ok: #1f7a4d;
+  --ok-soft: #e4f3ea;
+  --warn: #9a5b00;
+  --warn-soft: #fbf0db;
+  --danger: #b4232c;
+  --danger-soft: #fbe6e7;
+  --info: #3756a8;
+  --info-soft: #e7ecf8;
+  --focus: #0e6b73;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #12161c;
+  --surface: #181d25;
+  --surface-2: #1f2530;
+  --ink: #e7eaef;
+  --ink-2: #c3c9d3;
+  --muted: #949dab;
+  --line: #29303b;
+  --line-strong: #3a4250;
+  --accent: #5fb8bf;
+  --accent-ink: #0b2628;
+  --accent-soft: #17343a;
+  --ok: #5cc28f;
+  --ok-soft: #173327;
+  --warn: #e7a948;
+  --warn-soft: #3a2c14;
+  --danger: #f07a80;
+  --danger-soft: #3d1c20;
+  --info: #93abee;
+  --info-soft: #1e2a47;
+  --focus: #5fb8bf;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Plan document typography ---------------------------------------- */
+.plan-doc {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--ink);
+  max-width: 72ch;
+}
+.plan-doc h1 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 1rem;
+}
+.plan-doc h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 0.9rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
+}
+.plan-doc h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15.5px;
+  margin: 1.8rem 0 0.5rem;
+  color: var(--ink-2);
+  scroll-margin-top: 1.5rem;
+}
+.plan-doc p {
+  margin: 0.75rem 0;
+}
+.plan-doc ul,
+.plan-doc ol {
+  margin: 0.6rem 0 1rem;
+  padding-left: 1.4rem;
+}
+.plan-doc ul {
+  list-style: disc;
+}
+.plan-doc ol {
+  list-style: decimal;
+}
+.plan-doc li {
+  margin: 0.3rem 0;
+}
+.plan-doc li::marker {
+  color: var(--muted);
+}
+.plan-doc li.task-list-item {
+  list-style: none;
+  margin-left: -1.4rem;
+}
+.plan-doc li.task-list-item > input {
+  margin-right: 0.6rem;
+  accent-color: var(--accent);
+  transform: translateY(1px);
+}
+.plan-doc ul.contains-task-list ul {
+  list-style: none;
+  color: var(--muted);
+  font-size: 15px;
+  padding-left: 1.85rem;
+}
+.plan-doc a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.plan-doc strong {
+  font-weight: 650;
+}
+.plan-doc em {
+  color: var(--ink-2);
+}
+.plan-doc blockquote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 6px 6px 0;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.plan-doc blockquote p {
+  margin: 0.2rem 0;
+}
+.plan-doc code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.08em 0.35em;
+}
+.plan-doc pre {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.plan-doc pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+.plan-doc .table-wrap {
+  margin: 1rem 0 1.4rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.plan-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.plan-doc th {
+  text-align: left;
+  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.plan-doc th,
+.plan-doc td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.plan-doc tr:last-child td {
+  border-bottom: 0;
+}
+.plan-doc hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0;
+}
+
+/* highlight.js tokens mapped to the palette */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #8a3ffc;
+}
+.hljs-string,
+.hljs-attr {
+  color: #1f7a4d;
+}
+.hljs-number,
+.hljs-literal {
+  color: #9a5b00;
+}
+.hljs-comment {
+  color: var(--muted);
+  font-style: italic;
+}
+.hljs-title,
+.hljs-function {
+  color: #3756a8;
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-built_in {
+  color: #c4a5ff;
+}
+.dark .hljs-string,
+.dark .hljs-attr {
+  color: #7fd6a7;
+}
+.dark .hljs-number,
+.dark .hljs-literal {
+  color: #f0bd6a;
+}
+.dark .hljs-title,
+.dark .hljs-function {
+  color: #9fb6f3;
+}
